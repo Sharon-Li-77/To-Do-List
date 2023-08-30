@@ -1,4 +1,7 @@
+import { useQuery } from '@tanstack/react-query'
 import AddTodo from './AddTodo.tsx'
+import { fetchAllTask } from '../apis/task.ts'
+import TaskList from './TaskList.tsx'
 
 function App() {
   return (
@@ -8,6 +11,7 @@ function App() {
         <AddTodo />
       </header>
       <section className="main"></section>
+      <TaskList />
       <footer className="footer"></footer>
     </>
   )
