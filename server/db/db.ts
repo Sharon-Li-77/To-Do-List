@@ -15,7 +15,7 @@ export async function addTask(
 export async function updateTask(
   id: number,
   task_details: string,
-  priority: string,
+  priority: boolean,
   completed: boolean
 ) {
   return db('tasks')

@@ -16,13 +16,12 @@ export async function addTaskClient(task: eachTask) {
 }
 
 interface updateTask {
+  id: string
   task_details: string
-  priority: boolean
-  completed: boolean
 }
 
-export async function updateTaskClient(id: number, updateTasks: updateTask) {
-  await request.patch(`api/v1/tasks/${id}`).send({ updateTasks })
+export async function updateTaskClient({ id, task_details }: updateTask) {
+  await request.patch(`api/v1/tasks/${id}`).send({ task_details })
 }
 
 export async function deleteTaskClient(id: number) {
