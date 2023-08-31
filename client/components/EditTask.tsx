@@ -1,37 +1,52 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { eachTask, fetchAllTask, updateTaskClient } from '../apis/task'
+import {
+  deleteTaskClient,
+  eachTask,
+  fetchAllTask,
+  updateTaskClient,
+} from '../apis/task'
 import { updateTask } from '../../server/db/db'
 import { useState } from 'react'
 
-interface Ids {
+interface Props {
   id: number
 }
 
-function EditTask(id: Ids) {
+function EditTask(props: Props) {
   const { data } = useQuery(['task'], fetchAllTask)
   const [editText, setEditText] = useState(false)
-  console.log(id)
   const queryClinet = useQueryClient()
-  // const updateMuation = useMutation({
-  //   mutationFn: (task: string) => updateTaskClient({id.id, task}),
-  //   onSuccess: () => {
-  //     queryClinet.invalidateQueries(['task'])
-  // },
-  // })
+  const updateMuation = useMutation({
+    mutationFn: (task: string) =>
+      updateTaskClient({ id: props.id, task_details: task }),
+    onSuccess: () => {
+      queryClinet.invalidateQueries(['task'])
+    },
+  })
+
+  const deleteMuation = useMutation({
+    mutationFn: (id: number) => deleteTaskClient(id),
+    onSuccess: () => {
+      queryClinet.invalidateQueries(['task'])
+    },
+  })
+
+  function deleteClick(id: number) {
+    deleteMuation.mutate(props.id)
+  }
 
   function handleEditing(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const target = e.currentTarget
     const form = new FormData(target)
-    const task = form.get('edit-details')?.valueOf() as string
+    const task_details = form.get('edit-details')?.valueOf() as string
     // const priority = form.get('priority')?.valueOf() as string
     // const completed = form.get('completed')?.valueOf() as boolean
     // const finalTask = { task_details, priority, completed }
     // console.log(task_details, priority, completed)
-    console.log('edit', id.id, task)
+    // console.log('edit', id.id, task_details)
 
-    updateMuation.mutate(task)
-    setEditText(false)
+    updateMuation.mutate(task_details)
   }
 
   return (
@@ -44,6 +59,10 @@ function EditTask(id: Ids) {
           name="edit-details"
         />
       </form>
+      <button
+        onClick={() => deleteClick(props.id)}
+        className="destroy"
+      ></button>
     </>
   )
 }

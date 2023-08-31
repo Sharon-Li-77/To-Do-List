@@ -26,9 +26,10 @@ router.post('/', async (req, res) => {
 })
 
 router.patch('/:id', async (req, res) => {
-  const id = parseInt(req.params.id)
-  const { task_details, priority, completed } = req.body
   try {
+    const id = parseInt(req.params.id)
+    const { task_details, priority, completed } = req.body
+    console.log(req.body)
     await db.updateTask(id, task_details, priority, completed)
     res.sendStatus(200)
   } catch (err) {
@@ -38,8 +39,8 @@ router.patch('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
-  const id = parseInt(req.params.id)
   try {
+    const id = parseInt(req.params.id)
     await db.deleteTask(id)
     res.sendStatus(200)
   } catch (err) {

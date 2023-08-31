@@ -1,5 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { eachTask, fetchAllTask } from '../apis/task'
+import {
+  deleteTaskClient,
+  eachTask,
+  fetchAllTask,
+  updateTaskClient,
+} from '../apis/task'
 import { updateTask } from '../../server/db/db'
 import EditTask from './EditTask'
 
@@ -15,7 +20,6 @@ function TaskList() {
             <div className="view">
               <input className="toggle" type="checkbox" />
               <label>{item.task_details}</label>
-              <button className="destroy"></button>
             </div>
           </li>
         ))}

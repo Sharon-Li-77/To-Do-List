@@ -16,7 +16,7 @@ export async function addTaskClient(task: eachTask) {
 }
 
 interface updateTask {
-  id: string
+  id: number
   task_details: string
 }
 
