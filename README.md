@@ -2,6 +2,15 @@
 
 I built a todo app, by using the full stack! From the database to the server, the API client, React and React Query.
 
+
+Before running this app, please intsall and run migration in your local terminal:
+npm i
+npm run knex migrate:latest
+npm run knex seed:run
+
+
+Technology applied:
+
 Back end (Server-side)
 1. Building the database
 2. Building the API
