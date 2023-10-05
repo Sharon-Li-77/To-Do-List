@@ -4,9 +4,13 @@ I built a todo app, by using the full stack! From the database to the server, th
 
 
 Before running this app, please intsall and run migration in your local terminal:
-npm i
-npm run knex migrate:latest
-npm run knex seed:run
+
+
+#1.npm i
+
+#2. npm run knex migrate:latest
+
+#3. npm run knex seed:run
 
 
 Technology applied:
