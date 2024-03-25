@@ -1,6 +1,6 @@
 #TODO App
 
-I built a todo app, by using the full stack! From the database to the server, the API client, React and React Query.
+Full stack project. From building up backend database & server to frontend by using the API & React (React Query).
 
 
 Before running this app, please intsall and run migration in your local terminal:
