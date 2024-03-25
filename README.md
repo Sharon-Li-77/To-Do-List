@@ -11,6 +11,7 @@ Back end (Server-side)
 
 
 Front end (Client-side)
+
 4. Setting the stage
 5. Building the API client
 6. Querying Data
