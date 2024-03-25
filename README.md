@@ -8,6 +8,8 @@ Back end (Server-side)
 1. Building the database
 2. Building the API
 3. TypeScript 
+
+
 Front end (Client-side)
 4. Setting the stage
 5. Building the API client
